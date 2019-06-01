@@ -1,0 +1,27 @@
+#!/bin/bash
+
+PROJECTS=$HOME/MyProjects
+FOLDER=$PROJECTS/$1
+SCRIPT=$(readlink -f "$0")
+BASEDIR=$(dirname "$SCRIPT")
+
+
+function create_folders(){
+    if [ ! -d $PROJECTS ] ; then
+        mkdir -p $PROJECTS && cd $PROJECTS
+    fi
+
+    if [ ! -d $FOLDER ] ; then
+        mkdir $FOLDER && cd $FOLDER
+    fi
+}
+
+create_git(){
+   git init 
+   python3 $BASEDIR/git-scraper.py $1 $2
+}
+
+create_folders $1
+cd $FOLDER
+create_git $1 $FOLDER
+
