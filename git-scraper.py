@@ -1,8 +1,6 @@
 import sys
 import os
-import requests
 import mechanicalsoup
-from bs4 import BeautifulSoup
 
 base_url = "https://www.github.com"
 repo = sys.argv[1]
@@ -11,7 +9,6 @@ cmd = "pass github"
 
 username = "barbafh3"
 password = os.popen(cmd).read().strip()
-# print(f'$${password}$$')
 
 os.system('echo Logging into Github...')
 browser = mechanicalsoup.StatefulBrowser()
@@ -43,7 +40,6 @@ if resp.ok:
     else:
         os.system('echo Failed to create repository')
         exit()
-
 else:
     os.system("echo Login failed")
     exit()
