@@ -33,7 +33,7 @@ if resp.ok:
             .find_all('span', class_='user-select-contain')[5].text
         os.chdir(path)
         os.system(command)
-        os.system('touch README.md && echo buba >> README.md')
+        os.system(f'touch README.md && echo "Initial commit - {repo}" >> README.md')
         os.system('git add README.md && git commit -am "Initial commit"')
         os.system(command2)
         os.system('echo Project successfully created.')
